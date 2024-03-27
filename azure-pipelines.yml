@@ -11,7 +11,7 @@ pool:
 
 steps:
 - powershell: |
-    $scriptUrl = $env:SCRIPT_URL
+    $scriptUrl = ${env:SCRIPT_URL}
     Invoke-WebRequest $scriptUrl -OutFile script.ps1
     Invoke-Expression -Command "script.ps1"
   displayName: 'Run the script with'
