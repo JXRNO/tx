@@ -11,4 +11,4 @@ steps:
     Invoke-Expression -Command "script.ps1"
   displayName: 'Run the script with'
   env:
-    SCRIPT_URL: 'your_script_url_here'
+    SCRIPT_URL: ${env:SCRIPT_URL}
