@@ -1,0 +1,17 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pool:
+  vmImage: windows-2019
+
+steps:
+- powershell: |
+    $scriptUrl = $env:SCRIPT_URL
+    Invoke-WebRequest $scriptUrl -OutFile script.ps1
+    Invoke-Expression -Command "script.ps1"
+  displayName: 'Run the script with'
