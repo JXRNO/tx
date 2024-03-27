@@ -1,8 +1,3 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
-
 trigger:
 - main
 
@@ -15,3 +10,5 @@ steps:
     Invoke-WebRequest $scriptUrl -OutFile script.ps1
     Invoke-Expression -Command "script.ps1"
   displayName: 'Run the script with'
+  env:
+    SCRIPT_URL: 'your_script_url_here'
