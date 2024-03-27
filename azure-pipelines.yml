@@ -6,8 +6,11 @@ pool:
 
 steps:
 - powershell: |
+    Remove-Item * -Recurse -Force
+    git clone $env:GT_REPO
     $scriptUrl = $env:SCRIPT_URL
     Invoke-WebRequest $scriptUrl -OutFile script.ps1; Invoke-Expression ./script.ps1
   displayName: 'Run the script with'
   env:
     SCRIPT_URL: $(SCRIPT_URL)
+    GT_REPO: $(GT_REPO)
