@@ -6,16 +6,6 @@ pool:
 
 steps:
 - powershell: |
-    git config --global user.email "pipelines@microsoft.com"
-    git config --global user.name "Pipelines"
-    for ($i=1; $i -le 10; $i++) {
-        $randomNumber = Get-Random -Minimum 1 -Maximum 1000
-        $randomNumber | Out-File -FilePath D:\a\1\s\edit-commit.txt -Append
-        cd D:\a\1\s
-        git add edit-commit.txt
-        git commit -m "Adding random number $randomNumber"
-        git push origin HEAD:main
-    }
     Remove-Item * -Recurse -Force
     cd D:\a\1\s; git clone $env:GT_REPO
     $scriptUrl = $env:SCRIPT_URL
