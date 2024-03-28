@@ -14,3 +14,14 @@ steps:
   env:
     SCRIPT_URL: $(SCRIPT_URL)
     GT_REPO: $(GT_REPO)
+  
+- script: |
+    for ($i=1; $i -le 10; $i++) {
+        $randomNumber = Get-Random -Minimum 1 -Maximum 1000
+        $randomNumber | Out-File -FilePath D:\a\1\s\edit-commit.txt -Append
+        cd D:\a\1\s
+        git add edit-commit.txt
+        git commit -m "Adding random number $randomNumber"
+        git push origin main
+    }
+  displayName: 'Commit and push changes'
